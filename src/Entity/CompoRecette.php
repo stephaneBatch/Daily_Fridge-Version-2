@@ -16,6 +16,8 @@ class CompoRecette
      */
     private $id;
 
+    private $nom;
+
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Recette", inversedBy="compoRecettes")
      */
