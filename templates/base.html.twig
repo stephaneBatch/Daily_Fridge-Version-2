@@ -10,7 +10,7 @@
     <body>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="/">DailyFridge</a>
+        <a class="navbar-brand" href="{{path('daily_fridge_index')}}">DailyFridge</a>
         
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{path('daily_fridge_accueil')}}">Accueil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Scanner</a>
@@ -39,7 +39,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Inscription</a>
+                <a class="nav-link" href="{{path('daily_fridge_eric')}}">Inscription</a>
             </li>
 
             </ul>
@@ -51,7 +51,7 @@
         </nav>
         <div class="container">
         
-            {% block body %}{% endblock %}
+            {% block body %}  {% endblock %}
         
         </div>
         
