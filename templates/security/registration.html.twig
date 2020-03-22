@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Bienvenue sur la page d'inscription !</h1>
+    
+    {{form_start(form)}}
+    
+    {{form_row(form.Nom, {'label':'Nom d\'utilisateur', 'attr':{
+        'placeholder':'Nom de l\'utilisateur', 'class':'form-control' }} ) }}
+
+     {{form_row(form.Prenom, {'label':'Prénom de l\'utilisateur', 'attr':{
+        'placeholder':'Prénom de l\'utilisateur','class':'form-control'  }} ) }}
+      {{form_row(form.Sexe, {'label':'Sexe', 'attr':{
+        'placeholder':'Genre','class':'form-control'  }} ) }}
+      {{form_row(form.Email, {'label':'Email', 'attr':{
+        'placeholder':'Email','class':'form-control'  }} ) }}
+      {{form_row(form.Mdp, {'label':'Mot de passe', 'attr':{
+        'placeholder':'Mot de passe','class':'form-control'  }} ) }}
+      {{form_row(form.Confirm_mdp, {'label':'Confirmation du mot de passe', 'attr':{
+        'placeholder':'Confirmation du mot de passe','class':'form-control'  }} ) }}
+      {{form_row(form.TypeUtilisateur, {'label':'Type d\'utilisateur', 'attr':{
+        'placeholder':'Type d\'utilisateur','class':'form-control'}} ) }}
+    <br/>
+    <button type="submit" class="btn btn-success">Inscrire</button>
+    <button type="reset" class="btn btn-secondary ">  Effacer  </button>
+    {{form_end(form)}} 
+
+{% endblock %}
+

@@ -2,14 +2,22 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
+ * @UniqueEntity(
+ *         fields={"Email"},
+ *         message="Cet email existe déjà dans la base de données !"
+ * 
+ * )    
  */
-class Utilisateur
+class Utilisateur implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -35,13 +43,18 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
     private $Email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire au moins huit caractères")
+     * @Assert\EqualTo(propertyPath="Confirm_mdp", message="Vos mots de passe ne correspondent pas !")
      */
     private $Mdp;
+
+    public $Confirm_mdp;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\TypeUtilisateur", inversedBy="utilisateurs")
@@ -165,6 +178,22 @@ class Utilisateur
 
         return $this;
     }
+
+    public function eraseCredentials(){}
+
+    public function getSalt(){}
+
+    public function getUserName(){
+        return getEmail();
+    }
+
+    public function getPassword(){}
+
+    public function getRoles(){
+        return ['ROLE_USER'];
+    }
+
+
 
 
 
